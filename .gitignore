@@ -1,0 +1,8 @@
+.env
+.env.local
+*.db
+resumes.db
+__pycache__/
+.venv/
+*.pyc
+.vscode/
