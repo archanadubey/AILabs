@@ -6,10 +6,18 @@ from openai import OpenAI
 import os
 import html
 from dotenv import load_dotenv
-from auth import register_user, login_user
-from database import save_resume, get_user_resumes
-from ats_analyzer import calculate_ats_score, get_ats_improvement_tips
-from db_viewer import view_all_users, view_all_resumes, get_database_stats, delete_all_data
+
+try:
+    from .auth import register_user, login_user
+    from .database import save_resume, get_user_resumes
+    from .ats_analyzer import calculate_ats_score, get_ats_improvement_tips
+    from .db_viewer import view_all_users, view_all_resumes, get_database_stats, delete_all_data
+except ImportError:
+    # Fallback for direct execution: `streamlit run ai_resumes_tool/app.py`
+    from auth import register_user, login_user
+    from database import save_resume, get_user_resumes
+    from ats_analyzer import calculate_ats_score, get_ats_improvement_tips
+    from db_viewer import view_all_users, view_all_resumes, get_database_stats, delete_all_data
 
 # Load environment variables
 load_dotenv(override=True, dotenv_path=".env.local")

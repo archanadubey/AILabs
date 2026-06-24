@@ -1,5 +1,9 @@
 import bcrypt
-from database import get_user_by_username, create_user
+
+try:
+    from .database import get_user_by_username, create_user
+except ImportError:
+    from database import get_user_by_username, create_user
 
 def hash_password(password):
     """Hash password with bcrypt"""
